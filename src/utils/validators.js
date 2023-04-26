@@ -21,14 +21,6 @@ export const validatePassword = (value, message) => {
   }
 };
 
-export const validatePasswordConfirm = (value, newPassword) => {
-  if (value === newPassword) {
-    return true;
-  } else {
-    return "새 비밀번호와 일치하지 않습니다.";
-  }
-};
-
 export const validateName = (value) => {
   if (/^[가-힣]{2,4}$/.test(value) == false) {
     return "올바른 이름을 입력하세요.";
