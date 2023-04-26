@@ -1,11 +1,12 @@
 <template>
-  <q-form id="passwordChangeForm" class="q-gutter-md">
+  <q-form class="q-gutter-md" @submit.prevent="onSubmit">
     <q-input
       v-model="ldap"
       type="text"
       label="사용자 계정 *"
       stack-label
       options-dense
+      lazy-rules
       :rules="[(val) => validateEmail(val)]"
     />
 
@@ -44,12 +45,10 @@
 
     <p class="text-grey-8">
       비밀번호는 영문 대소문자와 숫자, 특수문자를 사용하여 8자리 이상의 길이로
-      구성해야 합니다.
+      구성해야 합니다.(사용 가능한 특수문자: @$!%*#?&^()-_=+~.,/[]\)
     </p>
-    <p class="text-grey-8">사용 가능한 특수문자: @$!%*#?&^()-_=+~.,/[]\</p>
-
     <q-card-actions align="right">
-      <q-btn color="primary" form="passwordChangeForm">확인</q-btn>
+      <q-btn type="submit" color="primary" label="확인"></q-btn>
     </q-card-actions>
   </q-form>
 </template>
@@ -61,6 +60,10 @@ const ldap = ref(null);
 const currentPassword = ref(null);
 const NewPassword = ref(null);
 const NewPasswordConfirm = ref(null);
+
+const onSubmit = () => {
+  console.log("onSubmit() called!");
+};
 </script>
 
 <style lang="scss" scoped>

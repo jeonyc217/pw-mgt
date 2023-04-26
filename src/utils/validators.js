@@ -22,7 +22,7 @@ export const validatePassword = (value, message) => {
 };
 
 export const validateName = (value) => {
-  if (/^[가-힣]{2,4}$/.test(value) == false) {
+  if (/^[가-힣]{2,5}$/.test(value) == false) {
     return "올바른 이름을 입력하세요.";
   } else {
     return true;

@@ -1,11 +1,12 @@
 <template>
-  <q-form id="passwordChangeForm" class="q-gutter-md">
+  <q-form ref="myForm" class="q-gutter-md" @submit.prevent="onSubmit">
     <q-input
       v-model="ldap"
       type="text"
       label="사용자 계정 *"
       stack-label
       options-dense
+      lazy-rules
       :rules="[(val) => validateEmail(val)]"
     />
     <q-input
@@ -14,6 +15,7 @@
       label="이름 *"
       stack-label
       options-dense
+      lazy-rules
       :rules="[(val) => validateName(val)]"
     />
     <q-select
@@ -55,14 +57,13 @@
       </template>
     </q-field>
     <q-card-actions align="right">
-      <q-btn color="primary" @click="clickConfirm">확인</q-btn>
+      <q-btn type="submit" color="primary" label="확인"></q-btn>
     </q-card-actions>
   </q-form>
 </template>
 
 <script setup>
 import { ref } from "vue";
-import CardTitle from "components/AppCommon/Title/CardTitle.vue";
 import { validateEmail, validateName } from "src/utils/validators";
 
 const reasonOptions = ref([
@@ -76,6 +77,13 @@ const name = ref(null);
 const reason = ref(null);
 const verifyOwnLDAP = ref(false);
 const verifySSHKeyReset = ref(false);
+
+const myForm = ref(null);
+
+const onSubmit = () => {
+  console.log("캬캬");
+  myForm.value.focus();
+};
 </script>
 
 <style lang="scss" scoped></style>
