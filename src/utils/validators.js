@@ -28,3 +28,16 @@ export const validateName = (value) => {
     return true;
   }
 };
+
+export const validateRequire = (value, message) => {
+  console.log("여기 콜은 되나?");
+  if (typeof value === "string") {
+    if (!value) {
+      return false || message;
+    }
+  } else if (typeof value === "object") {
+    if (value.length === 0) {
+      return false || message;
+    }
+  }
+};
